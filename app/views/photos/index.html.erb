@@ -1,0 +1,14 @@
+<h3>
+  <%= link_to "New photo", new_photo_path %>
+  My photos -
+  All photos -
+  Tags
+</h3>
+
+<% @photos.each do |photo| %>
+  <p>
+    <%= link_to photo.title, photo_path(photo) %>
+    <%= image_tag photo.photo_url %>
+    <%= photo.score %>
+  </p>
+<% end %>

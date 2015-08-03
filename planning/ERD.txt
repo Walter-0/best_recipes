@@ -1,0 +1,18 @@
+Users
+  username
+  password
+
+Photos
+  title
+  photo_url
+  score
+  user_id
+
+Comments
+  author
+  content
+  photo_id
+
+Tags
+  tag_name
+  photo_id
