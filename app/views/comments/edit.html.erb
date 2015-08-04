@@ -1,0 +1,5 @@
+<%= render partial: "comments/comment_form" %>
+
+<%= form_for [@photo, @comment], method: :delete do |f| %>
+  <%= f.submit "Remove Comment", class: "delete" %>
+  <% end %>

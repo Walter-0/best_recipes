@@ -13,23 +13,23 @@ class PhotosController < ApplicationController
   def new
     @photo = Photo.new
   end
-  
+
   #create
   def create
     @photo = Photo.create!(photo_params)
     redirect_to (photo_path(@photo))
   end
 
-
   #edit
   def edit
     @photo = Photo.find(params[:id])
   end
 
-  #show
+  #show/new comment
   def show
     @photo = Photo.find(params[:id])
     @comments = @photo.comments
+    @comment = Comment.new
     # @tags = @photo.tags
   end
 
@@ -50,5 +50,10 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:title, :photo_url, :user_id)
   end
+
+  private
+      def comment_params
+        params.require(:comment).permit(:content)
+      end
 
 end

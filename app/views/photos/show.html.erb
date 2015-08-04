@@ -15,10 +15,19 @@
 <p>
   <%= link_to "Add Tag", new_tag_path %>
 </p>
+
+<p>
 <%= form_for @photo, method: :delete do |f| %>
   <%= f.submit "Remove Photo", class: "delete" %>
   <% end %>
-
-<p>
-  <%= link_to "Add Comment", new_photo_comment_path(@photo) %>
 </p>
+
+<% @comments.each do |comment| %>
+  <ul>
+    <%= link_to comment.id, photo_comment_path(@photo, comment) %>
+    <%= comment.content %>
+  </ul>
+
+<% end %>
+
+<%= render partial: "comments/comment_form" %>
