@@ -9,16 +9,17 @@ class PhotosController < ApplicationController
   #def myIndex
   #end
 
+  #new
+  def new
+    @photo = Photo.new
+  end
+  
   #create
   def create
     @photo = Photo.create!(photo_params)
     redirect_to (photo_path(@photo))
   end
 
-  #new
-  def new
-    @photo = Photo.new
-  end
 
   #edit
   def edit
