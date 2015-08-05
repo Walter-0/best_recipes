@@ -1,0 +1,10 @@
+<p>
+  <% @tag.categories.each do |category| %>
+    <%= category.photo.title %>
+    <%= image_tag category.photo.photo_url %>
+  <% end %>
+</p>
+
+<%= form_for (@tag), method: :delete do |f| %>
+  <%= f.submit "Remove Tag", class: "delete" %>
+  <% end %>

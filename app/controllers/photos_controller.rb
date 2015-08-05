@@ -30,7 +30,9 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @comments = @photo.comments
     @comment = Comment.new
-    # @tags = @photo.tags
+    @tag = Tag.new
+    @tags = @photo.tags
+    @categories = @photo.categories
   end
 
   #update
@@ -42,8 +44,24 @@ class PhotosController < ApplicationController
   #destroy
   def destroy
     @photo = Photo.find(params[:id])
+    @photo.categories.destroy_all
     @photo.destroy
     redirect_to root_path
+  end
+
+  def add_tag
+    @tag = Tag.find_by(tag_name: params[:tag_name])
+    if !@tag
+      @tag = Tag.create!(tag_name: params[:tag_name])
+    end
+    @tag.categories.create!(photo_id: params[:photo_id])
+    redirect_to :back
+  end
+
+  def delete_tag
+    @tag = Tag.find_by(tag_name: params[:tag_name])
+    @tag.categories.destroy_all
+    redirect_to :back
   end
 
   private
@@ -52,8 +70,8 @@ class PhotosController < ApplicationController
   end
 
   private
-      def comment_params
-        params.require(:comment).permit(:content)
-      end
+    def comment_params
+      params.require(:comment).permit(:content)
+    end
 
 end

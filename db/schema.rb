@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803133735) do
+ActiveRecord::Schema.define(version: 20150804220323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "categories", ["photo_id"], name: "index_categories_on_photo_id", using: :btree
+  add_index "categories", ["tag_id"], name: "index_categories_on_tag_id", using: :btree
+
   create_table "comments", force: :cascade do |t|
-    t.string  "author"
     t.string  "content"
     t.integer "photo_id"
   end
@@ -27,25 +36,23 @@ ActiveRecord::Schema.define(version: 20150803133735) do
   create_table "photos", force: :cascade do |t|
     t.string  "title"
     t.string  "photo_url"
-    t.string  "score"
+    t.integer "score"
     t.integer "user_id"
   end
 
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "tag_name"
-    t.integer "photo_id"
+    t.string "tag_name"
   end
-
-  add_index "tags", ["photo_id"], name: "index_tags_on_photo_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
   end
 
+  add_foreign_key "categories", "photos"
+  add_foreign_key "categories", "tags"
   add_foreign_key "comments", "photos"
   add_foreign_key "photos", "users"
-  add_foreign_key "tags", "photos"
 end

@@ -1,3 +1,4 @@
 class Tag < ActiveRecord::Base
-  belongs_to :photo
+  has_many :categories
+  has_many :photos, through: :categories, dependent: :destroy
 end

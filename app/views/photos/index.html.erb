@@ -1,8 +1,7 @@
 <h3>
   <%= link_to "New photo", new_photo_path %>
-  My photos -
-  All photos -
-  Tags
+  <%= link_to "My photos" %>
+  <%= link_to "Tags", tags_path %>
 </h3>
 
 <% @photos.each do |photo| %>

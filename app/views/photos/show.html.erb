@@ -1,8 +1,4 @@
 <p>
-  My Photos -- All Photos
-</p>
-
-<p>
   <%= @photo.title %>
 </p>
   <div class="photo">
@@ -13,7 +9,20 @@
 </p>
 
 <p>
-  <%= link_to "Add Tag", new_tag_path %>
+  <% @categories.each do |category| %>
+  <%= link_to category.tag.tag_name, tag_path(category.tag) %>
+  <% end %>
+</p>
+
+<p>
+  <%= form_tag (photo_add_tag_path(@photo)) do %>
+
+  <%= label_tag 'tag_name' %>
+  <%= text_area_tag 'tag_name' %>
+
+  <%= submit_tag%>
+
+  <% end %>
 </p>
 
 <p>
