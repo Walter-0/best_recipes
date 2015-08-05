@@ -5,7 +5,9 @@
   <%= image_tag @photo.photo_url %>
   </div>
 <p>
-  upvotes - score - downvotes
+  <%= link_to "Upvote", photo_upvote_path(@photo), :method => :put %>
+  <%= @photo.score %>
+  <%= link_to "Downvote", photo_downvote_path(@photo), :method => :put %>
 </p>
 
 <p>

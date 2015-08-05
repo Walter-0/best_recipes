@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :photos do
         post 'add_tag'
         post 'delete_tag'
+        put 'upvote'
+        put 'downvote'
     resources :comments
   end
 

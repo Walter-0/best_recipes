@@ -17,6 +17,8 @@ class PhotosController < ApplicationController
   #create
   def create
     @photo = Photo.create!(photo_params)
+    @photo.score = 0
+    @photo.save
     redirect_to (photo_path(@photo))
   end
 
@@ -33,6 +35,7 @@ class PhotosController < ApplicationController
     @tag = Tag.new
     @tags = @photo.tags
     @categories = @photo.categories
+    @score = @photo.score
   end
 
   #update
@@ -62,6 +65,21 @@ class PhotosController < ApplicationController
     @tag = Tag.find_by(tag_name: params[:tag_name])
     @tag.categories.destroy_all
     redirect_to :back
+  end
+
+  def upvote
+    @photo = Photo.find(params[:photo_id])
+    @photo.score += 1
+    @photo.save
+
+    redirect_to photo_path(@photo)
+  end
+
+  def downvote
+    @photo = Photo.find(params[:photo_id])
+    @photo.score -= 1
+    @photo.save
+    redirect_to photo_path(@photo)
   end
 
   private
