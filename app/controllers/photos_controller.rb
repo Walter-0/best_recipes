@@ -1,8 +1,13 @@
 class PhotosController < ApplicationController
 
-  #index
+  #index, all photos
   def index
-    @photos = Photo.all
+    @photos = Photo.all.order(score: :desc)
+  end
+
+  #my_photos
+  def my_index
+    @photos = User.find(session[:user]["id"]).photos
   end
 
   #myIndex shows only user's photos
@@ -16,20 +21,22 @@ class PhotosController < ApplicationController
 
   #create
   def create
-    @photo = Photo.create!(photo_params)
+    @user = User.find(session[:user]["id"])
+    @photo = @user.photos.create!(photo_params)
     @photo.score = 0
     @photo.save
     redirect_to (photo_path(@photo))
   end
 
   #edit
-  def edit
-    @photo = Photo.find(params[:id])
-  end
+    def edit
+      @photo = Photo.find(params[:id])
+    end
 
   #show/new comment
   def show
     @photo = Photo.find(params[:id])
+    @user = @photo.user
     @comments = @photo.comments
     @comment = Comment.new
     @tag = Tag.new

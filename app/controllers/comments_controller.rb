@@ -13,8 +13,9 @@ class CommentsController < ApplicationController
 
   #create
   def create
+    @user = User.find(session[:user]["id"])
     @photo = Photo.find(params[:photo_id])
-    @comment = @photo.comments.create!(comment_params)
+    @comment = @photo.comments.where(user: @user).create!(comment_params)
     redirect_to photo_path(@photo)
   end
 

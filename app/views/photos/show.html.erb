@@ -36,7 +36,8 @@
 <% @comments.each do |comment| %>
   <ul>
     <%= link_to comment.id, photo_comment_path(@photo, comment) %>
-    <%= comment.content %>
+    <%= comment.user.username %> wrote:
+    <%=comment.content %>
   </ul>
 
 <% end %>
