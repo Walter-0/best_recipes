@@ -1,4 +1,4 @@
-1. As a user, I should be able to sign up, sign in, and sign out in order to have my photos saved.
+1. As a user, I should be able to sign up, sign in, and sign out in order to have my photos saved. DONE
 2. As a user, I should be able to post and delete photos for others to see. DONE
 3. As a user, I should be able to see all the posted photos. DONE
 4. As a user, I should be able to upvote or downvote photos that are posted. DONE

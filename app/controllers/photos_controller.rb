@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
 
   #my_photos
   def my_index
-    @photos = User.find(session[:user]["id"]).photos
+    @photos = User.find(session[:user]["id"]).photos.order(score: :desc)
   end
 
   #myIndex shows only user's photos

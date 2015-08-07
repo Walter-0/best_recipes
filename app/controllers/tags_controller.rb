@@ -24,6 +24,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @photo = Photo.find(params[:photo_id])
   end
+  
   #show
   def show
     @tag = Tag.find(params[:id])

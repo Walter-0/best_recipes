@@ -1,7 +1,22 @@
+<h1>
+  All Photos
+</h1>
+
 <% @photos.each do |photo| %>
-  <p>
-    <%= link_to photo.title, photo_path(photo) %>
-    <%= image_tag photo.photo_url %>
-    Score: <%= photo.score %>
-  </p>
+  <div class="row">
+
+    <div class="index_photo">
+      <%= image_tag photo.photo_url%>
+    </div>
+
+    <div class="index_photo_title">
+      <%= link_to photo.title, photo_path(photo)%>
+    </div>
+
+    <div class="index_photo_score">
+        Score: <%= photo.score %>
+    </div>
+
+    <div class="num_comments">Comments(<%= photo.comments.count %>)</div>
+    </div>
 <% end %>

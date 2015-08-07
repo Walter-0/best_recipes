@@ -13,3 +13,103 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+   box-sizing: border-box;
+ }
+
+body {
+  margin: 0;
+  background-color: #2F343B;
+  color: #E3CDA4;
+  font-family: georgia;
+}
+
+header{
+  background-color: #703030;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+}
+
+header h1 {
+}
+
+header h2 {
+}
+
+nav ul {
+  display: inline;
+  margin-left: 0;
+  padding: 0px;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 5px 20px;
+  background-color: #7E827A;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #E3CDA4;
+  font-size: 16px;
+
+}
+
+.row {
+  display: flex;
+  margin: 15px 0px;
+  background-color: #7E827A;
+  height: 200px;
+}
+
+
+div.index_photo img {
+  height: 200px;
+  float: left;
+}
+
+div.index_photo_title {
+  height: 100px;
+  position: relative;
+  left: 10px;
+  margin-top: 0;
+  margin-right: 30px;
+  max-width: 800px;
+}
+
+div.index_photo_title a {
+  font-size: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #E3CDA4;
+}
+
+
+div.index_photo_score {
+  font-size: 50px;
+  height: 100px;
+  margin: 0;
+}
+
+div.num_comments {
+  font-size: 20px;
+  height: 100px;
+  margin-left: 30px;
+  margin-top: 24px;
+}
+
+div.show_container {
+  text-align: center;
+}
+
+div.score {
+  font-size: 50px;
+}
+
+div.tag_index {
+  font-size: 30px;
+}

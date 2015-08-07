@@ -1,5 +1,11 @@
-<p>
+<h1>
+  Browse Tags
+</h1>
+
+<div class="tag_index">
+  <ul>
   <% @tags.each do |tag| %>
-  <%= link_to tag.tag_name, tag_path(tag) %>
+    <li><%= link_to tag.tag_name, tag_path(tag) %></li>
   <% end %>
-</p>
+  </ul>
+</div>

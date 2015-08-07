@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RateMyStyle</title>
+  <title>Rate My Style</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1>Rate my Style </h1>
-  <h2>The #1 Place on The Internet to Find Styles That People Actually Like</h2>
-  <nav>
-    <% if session[:user] %>
-      <a href="/sign_out"><%= session[:user]["username"] %>: Sign out</a>
-      <%= link_to "All Photos", photos_path %>
-      <%= link_to "My Photos", my_photos_path %>
-      <%= link_to "Post New Photo", new_photo_path %>
-      <%= link_to "Browse Tags", tags_path %>
-    <% else %>
-      <a href="/sign_up">Sign up</a>
-      <a href="/sign_in">Sign in</a>
-      <a href="/">Home</a>
+  <header>
+    <h1>Rate My Style </h1>
+    <h2>The #1 Place on The Internet to Find Styles That People Actually Like</h2>
+    <nav>
+      <ul>
+        <% if session[:user] %>
+          <li><a href="/sign_out"><%= session[:user]["username"] %>: Sign out</a></li>
+          <li><a href="/photos">All Photos</a></li>
+          <li><a href="/my_photos">My Photos</a></li>
+          <li><a href="/photos/new">Post New Photo</a></li>
+          <li><a href="/tags">Browse Tags</a></li>
+        <% else %>
+          <li><a href="/sign_up">Sign up</a></li>
+          <li><a href="/sign_in">Sign in</a></li>
+          <li><a href="/">Home</a></li>
+        <% end %>
+      </ul>
+    </nav>
 
-    <% end %>
-  </nav>
-  <h2>
-    <%= flash[:notice] %>
-  </h2>
+  </header>
+  <h2><%= flash[:notice] %></h2>
 <%= yield %>
 
 </body>

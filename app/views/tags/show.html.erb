@@ -1,6 +1,6 @@
 <p>
   <% @tag.categories.each do |category| %>
-    <%= category.photo.title %>
+    <%= link_to category.photo.title, photo_path(category.photo) %>
     <%= image_tag category.photo.photo_url %>
   <% end %>
 </p>
