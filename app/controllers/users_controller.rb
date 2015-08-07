@@ -36,6 +36,10 @@ class UsersController < ApplicationController
     flash[:notice] = message
     redirect_to action: :sign_in
   end
+  
+  # def current_user
+  #   current_user = session[:user]
+  # end
 
   def sign_out!
     message =  "You're signed out!"
