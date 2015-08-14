@@ -6,6 +6,9 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
+  # this action (as well as create / edit) actions aren't used and should be
+  # deleted to keep your code clean!
+  
   #new
   def new
     @photo = Photo.find(params[:photo_id])
@@ -24,7 +27,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @photo = Photo.find(params[:photo_id])
   end
-  
+
   #show
   def show
     @tag = Tag.find(params[:id])

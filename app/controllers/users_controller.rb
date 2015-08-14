@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  # a suggestion for next time you do user auth would be to check out this
+  # tutorial for a simpler version (robin's was designed for teaching the core
+  # concepts, but I'd recommend the linked approach for it's ease of use):
+  # Video:    http://adambray.me/i_can_haz_authenticationz.mp4
+  # Text:     http://adambray.me/authentication_from_scratch.pdf
+  
   skip_before_action :authenticate
   def sign_up
   end

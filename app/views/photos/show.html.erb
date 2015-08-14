@@ -8,6 +8,7 @@
   </div>
 
   <div class="score">
+    <!-- nice use of helpers! -->
     <%= link_to( image_tag("up.png"), photo_upvote_path(@photo), :method => :put ) %>
     <%= @photo.score %>
     <%= link_to( image_tag("down.png"), photo_downvote_path(@photo), :method => :put ) %>
@@ -42,6 +43,7 @@
   </div>
 
   <div class="add_comment">
+    <!-- nice use of partials -->
     <%= render partial: "comments/comment_form" %>
   </div>
 
