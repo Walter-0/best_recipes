@@ -1,3 +1,4 @@
+# this code isn't routable... I think it should be deleted!
 class CategoriesController < ApplicationController
 
   def create

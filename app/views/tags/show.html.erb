@@ -2,6 +2,8 @@
   <% @tag.categories.each do |category| %>
     <%= link_to category.photo.title, photo_path(category.photo) %>
     <%= image_tag category.photo.photo_url %>
+    <!-- for each image, you should make a link / form to route to the
+    photos#remove_tag action here! -->
   <% end %>
 </p>
 

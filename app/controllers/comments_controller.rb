@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   def create
     @user = User.find(session[:user]["id"])
     @photo = Photo.find(params[:photo_id])
-    @comment = @photo.comments.where(user: @user).create!(comment_params)
+    @comment = @photo.comments.where(user: @user).create!(comment_params.merge)
     redirect_to photo_path(@photo)
   end
 
@@ -32,6 +32,8 @@ class CommentsController < ApplicationController
 
   #update
   def update
+    # would be a good idea to ensure the current user matches the comment user
+    # to prevent editing other people's comments!
     @photo = Photo.find(params[:photo_id])
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
