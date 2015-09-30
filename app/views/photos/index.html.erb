@@ -1,12 +1,10 @@
-<h1>
-  All Photos
-</h1>
+<h1 class="pageTitle">All Photos</h1>
 
 <% @photos.each do |photo| %>
   <div class="row">
 
     <div class="index_photo">
-      <%= image_tag photo.photo_url%>
+      <%= link_to (image_tag photo.photo_url), photo_path(photo)%>
     </div>
 
     <div class="index_photo_title">

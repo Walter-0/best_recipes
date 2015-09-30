@@ -29,15 +29,10 @@ header{
   background-color: #703030;
   display: inline-block;
   width: 100%;
-  padding: 10px;
   margin: 0;
+  padding-left: 1em;
 }
 
-header h1 {
-}
-
-header h2 {
-}
 
 nav ul {
   display: inline;
@@ -59,30 +54,33 @@ nav ul li a {
 
 }
 
+.pageTitle{
+  padding-left: .5em;
+}
+
 .row {
   display: flex;
-  margin: 15px 0px;
+  flex-direction: row;
+  align-items: center;
+  margin: 1em 0;
   background-color: #7E827A;
   height: 200px;
+}
+
+.row * {
+  margin: 0 1em;
 }
 
 
 div.index_photo img {
   height: 200px;
   float: left;
+  margin-left: 0;
 }
 
-div.index_photo_title {
-  height: 100px;
-  position: relative;
-  left: 10px;
-  margin-top: 0;
-  margin-right: 30px;
-  max-width: 800px;
-}
 
 div.index_photo_title a {
-  font-size: 50px;
+  font-size: 2em;
   text-decoration: none;
   font-weight: bold;
   color: #E3CDA4;
@@ -90,16 +88,11 @@ div.index_photo_title a {
 
 
 div.index_photo_score {
-  font-size: 50px;
-  height: 100px;
-  margin: 0;
+  font-size: 2em;
 }
 
 div.num_comments {
-  font-size: 20px;
-  height: 100px;
-  margin-left: 30px;
-  margin-top: 24px;
+  font-size: 1.5em;
 }
 
 div.show_container {
@@ -110,6 +103,44 @@ div.score {
   font-size: 50px;
 }
 
-div.tag_index {
-  font-size: 30px;
+
+.tag_index a{
+  text-decoration: none;
+  color: #E3CDA4;
+  font-size: 3em;
+  margin-right: 1em;
+}
+
+.tags a{
+  text-decoration: none;
+  display: inline-flex;
+  color: #E3CDA4;
+  font-size: 1.5em;
+  margin: .5em;
+  padding: .2em;
+  border: 2px solid #E3CDA4;
+}
+
+.showTagContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.showTag{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+
+.showTag a{
+  text-decoration: none;
+  display: inline-flex;
+  color: #E3CDA4;
+  font-size: 1.5em;
+}
+
+.showTag img{
+  height: 300px;
 }

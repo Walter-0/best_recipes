@@ -1,10 +1,16 @@
-<p>
-  <% @tag.categories.each do |category| %>
-    <%= link_to category.photo.title, photo_path(category.photo) %>
-    <%= image_tag category.photo.photo_url %>
-  <% end %>
-</p>
+<h1 class="pageTitle"><%= @tag.tag_name %></h1>
 
+
+<div class="showTagContainer">
+
+  <% @tag.categories.each do |category| %>
+    <div class="showTag">
+        <%= category.photo.title %>
+        <%= link_to (image_tag category.photo.photo_url), photo_path(category.photo) %>
+    </div>
+  <% end %>
+
+</div>
 <%= form_for (@tag), method: :delete do |f| %>
   <%= f.submit "Remove Tag", class: "delete" %>
-  <% end %>
+<% end %>
