@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     @user = User.find(session[:user]["id"])
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.where(user: @user).create!(comment_params)
+    # @comment = current_user.comments.create!(comment_params), add hidden field to form
     redirect_to photo_path(@photo)
   end
 
@@ -36,6 +37,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
     redirect_to photo_path(@photo)
+    # redirect_to @photo
   end
 
   #destroy
@@ -44,6 +46,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to photo_path(@photo)
+    # redirect_to @photo
   end
 
   private

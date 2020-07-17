@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
     @photo.score = 0
     @photo.save
     redirect_to (photo_path(@photo))
+    # redirect_to @photo
   end
 
   #edit
@@ -61,9 +62,10 @@ class PhotosController < ApplicationController
 
   def add_tag
     @tag = Tag.find_by(tag_name: params[:tag_name])
-    if !@tag
-      @tag = Tag.create!(tag_name: params[:tag_name])
-    end
+    # if !@tag
+    #   @tag = Tag.create!(tag_name: params[:tag_name])
+    # end
+    @tag ||= Tag.create!(tag_name: params[:tag_name])
     @tag.categories.create!(photo_id: params[:photo_id])
     redirect_to :back
   end
@@ -78,6 +80,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     @photo.score += 1
     @photo.save
+    # @photo.update(score: @photo.score += 1)
 
     redirect_to photo_path(@photo)
   end
@@ -86,6 +89,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     @photo.score -= 1
     @photo.save
+    # @photo.update(score: @photo.score -= 1)
     redirect_to photo_path(@photo)
   end
 
@@ -94,9 +98,10 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:title, :photo_url, :user_id)
   end
 
-  private
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
+
 
 end
